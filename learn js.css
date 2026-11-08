@@ -1,0 +1,72 @@
+body{
+    background-color:antiquewhite;
+    display:flex;
+    justify-content:center;
+}
+.操作面板{
+    background-color:white;
+    width:300px;
+    padding:30px;
+    margin-top:50px;
+    border-radius:20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    /* 增加柔和的陰影 ，水平偏移，垂直偏移，模糊半徑，顏色 */
+}
+
+.輸入區域{
+    display:flex;
+    border-radius:25px;
+    overflow:hidden;
+    /* 把圓角以外的地方隱藏起來 */
+}
+
+.文字欄{
+    flex-grow:1;
+    /* 文字欄填滿橫向空間 */
+    border:none;
+    background-color:#F0F4F8;
+    padding:10px 15px;
+    outline:none;
+    /* 在滑鼠放上去會有細框，刪除細框 */
+}
+
+.按鈕{
+    background-color:rgb(53, 163, 232);
+    border:none;
+    color:white;
+    padding:10px 15px;
+    cursor:pointer;
+}
+
+.清單{
+    list-style-type:none;
+    /* 去掉原本的小黑點 */
+    padding:0;
+}
+
+.清單 li{
+    display:flex;
+    padding:10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.清單 label{
+    flex-grow:1;
+}
+
+.打勾方塊{
+    margin-right:15px;
+}
+
+.垃圾桶{
+    background:none;
+    border:none;
+    cursor:pointer;
+    opacity: 0.5;
+    /* 透明度 */
+}
+
+.垃圾桶:hover {
+    /* 當滑鼠放到垃圾桶上，透明度改回100 */
+    opacity:1;
+}
