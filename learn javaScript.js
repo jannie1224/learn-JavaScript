@@ -149,74 +149,74 @@
 // console.log(任務2.textContent);
 // // const 所有任務 = document.querySelectorAll("li");
 // // 把li全部元素取出
-//---------------------------------------------------------------------------------------------------------------------
-const 文字欄 = document.querySelector(".文字欄");
-// console.log(文字欄.placeholder);
-const 清單 = document.querySelector(".清單");
-const 按鈕 = document.querySelector(".按鈕");
-//-----------------------------------------------------------------------------------------------------------
-function 新任務(){
-    if(文字欄.value === ""){
-        return;
-        //讓使用者有輸入內容的時候，才能建立列表
-        // 用return來中止程式，不要執行下方的程式
-    }
+//網頁要動的部分---------------------------------------------------------------------------------------------------------------------
+// const 文字欄 = document.querySelector(".文字欄");
+// // console.log(文字欄.placeholder);
+// const 清單 = document.querySelector(".清單");
+// const 按鈕 = document.querySelector(".按鈕");
+// //-----------------------------------------------------------------------------------------------------------
+// function 新任務(){
+//     if(文字欄.value === ""){
+//         return;
+//         //讓使用者有輸入內容的時候，才能建立列表
+//         // 用return來中止程式，不要執行下方的程式
+//     }
 
-    const 任務 = document.createElement("li");
-    // 增加新的元素
-    //任務.textContent = 文字欄.value;
-    // 如果要加其他功能，textContent功能有點不夠
-    // 下面這個可以一次插入一大段html的功能，要用反引號，在左上角
-    任務.innerHTML = `
-        <input type="checkbox" class="打勾方塊">
-        <label>${文字欄.value}</label>
-        <button class="垃圾桶">🗑️</button>
-    `
+//     const 任務 = document.createElement("li");
+//     // 增加新的元素
+//     //任務.textContent = 文字欄.value;
+//     // 如果要加其他功能，textContent功能有點不夠
+//     // 下面這個可以一次插入一大段html的功能，要用反引號，在左上角
+//     任務.innerHTML = `
+//         <input type="checkbox" class="打勾方塊">
+//         <label>${文字欄.value}</label>
+//         <button class="垃圾桶">🗑️</button>
+//     `
 
-    const 垃圾桶 = 任務.querySelector(".垃圾桶");
-    const 打勾方塊 = 任務.querySelector(".打勾方塊");
-    垃圾桶.addEventListener("click", function(){
-        任務.remove();
-        // 刪除語法
-    });
+//     const 垃圾桶 = 任務.querySelector(".垃圾桶");
+//     const 打勾方塊 = 任務.querySelector(".打勾方塊");
+//     垃圾桶.addEventListener("click", function(){
+//         任務.remove();
+//         // 刪除語法
+//     });
 
-    打勾方塊.addEventListener("change", function(){
-        //偵測如果方塊狀態改變，偵測方塊是不是被打勾
-        if(打勾方塊.checked){
-            任務.style.textDecoration = "line-through";
-            // 在字上加上橫線
-            任務.style.color = "#999";
-            清單.append(任務);
-            //把做完的任務放到最後
-        }else{
-            任務.style.textDecoration = "none";
-            // 去掉橫線
-            任務.style.color = "";
-            清單.prepend(任務);
-            //把任務放到清單上方
-        }
-    });
+//     打勾方塊.addEventListener("change", function(){
+//         //偵測如果方塊狀態改變，偵測方塊是不是被打勾
+//         if(打勾方塊.checked){
+//             任務.style.textDecoration = "line-through";
+//             // 在字上加上橫線
+//             任務.style.color = "#999";
+//             清單.append(任務);
+//             //把做完的任務放到最後
+//         }else{
+//             任務.style.textDecoration = "none";
+//             // 去掉橫線
+//             任務.style.color = "";
+//             清單.prepend(任務);
+//             //把任務放到清單上方
+//         }
+//     });
 
-    // 大小寫不能忽略喔，會跑不動
-    // windows+(.) 打開表情符號列
-    // 任務內容是文字欄的內容
-    清單.append(任務);
-    //append 把新的任務添加到清單底部
-    文字欄.value = "";
-    // 文字欄清空，讓下一個使用者可以輸入
-}
+//     // 大小寫不能忽略喔，會跑不動
+//     // windows+(.) 打開表情符號列
+//     // 任務內容是文字欄的內容
+//     清單.append(任務);
+//     //append 把新的任務添加到清單底部
+//     文字欄.value = "";
+//     // 文字欄清空，讓下一個使用者可以輸入
+// }
 
-按鈕.addEventListener("click",新任務);
-// 偵測到如果按下按鈕，就做新任務這個函式
+// 按鈕.addEventListener("click",新任務);
+// // 偵測到如果按下按鈕，就做新任務這個函式
 
-文字欄.addEventListener("keyup",function(e){
-    //console.log(e.key);
-    if(e.key === "Enter"){
-        //如果按下enter，主控台就顯示欄內的文字
-        //console.log(文字欄.value);
-        新任務();
-    }
-});
+// 文字欄.addEventListener("keyup",function(e){
+//     //console.log(e.key);
+//     if(e.key === "Enter"){
+//         //如果按下enter，主控台就顯示欄內的文字
+//         //console.log(文字欄.value);
+//         新任務();
+//     }
+// });
 // 可以偵測使用者動作，例如:點擊、移動、按鈕
 //keyup按下按鈕後放開的動作，只要按下，就做後面的函式
 //所有動作會打包成叫做e的參數送給函式
@@ -226,7 +226,7 @@ function 新任務(){
 
 
 
-//-----------------------------------------------------------------------------------------------------------------
+//網頁動到這裡-----------------------------------------------------------------------------------------------------------------
 // • 字串 (String): "文字"
 // • 數字 (Number): 10, 3.14
 // • 布林值 (Boolean): true, false
@@ -272,8 +272,8 @@ function 新任務(){
 //  雖然不會報錯（會得到 null），
 // 但如果後續直接當作物件操作（例如 null.name）程式就會壞掉。
 //安全寫法
-const localData = localStorage.getItem("user");
-const user = localData ? JSON.parse(localData) : {name:"訪客"};
+// const localData = localStorage.getItem("user");
+// const user = localData ? JSON.parse(localData) : {name:"訪客"};
 // 如果資料有和地端資料相同，就輸出轉換回來的資料，否則輸出原本資料
 
 // 無法儲存「方法（Functions）」：
@@ -281,3 +281,87 @@ const user = localData ? JSON.parse(localData) : {name:"訪客"};
 // 如果你的物件裡面寫了 function（例如 sayHello()），
 // 在轉成字串的過程中該 function 會直接被忽略並消失
 //---------------------------------------------------------------------------------------------------------------------------------------
+
+
+const 文字欄 = document.querySelector(".文字欄");
+const 清單 = document.querySelector(".清單");
+const 按鈕 = document.querySelector(".按鈕");
+
+// 1. 初始化：從 LocalStorage 讀取資料，如果沒有資料，就給一個空陣列 []
+// 因為拿出來的是字串，所以要用 JSON.parse() 轉回陣列
+let 任務資料 = JSON.parse(localStorage.getItem("myTodoList")) || [];
+
+// 2. 渲染畫面的函式：負責把「任務資料」陣列裡面的東西畫到網頁上
+function 渲染畫面() {
+    清單.innerHTML = ""; // 每次畫之前先清空，不然會重複產出
+    
+    任務資料.forEach((項目, 索引) => {
+        const 任務 = document.createElement("li");
+        
+        // 根據資料內部的 checked 狀態，決定要不要加上刪除線樣式
+        let 刪除線 = 項目.checked ? "style='text-decoration: line-through; color: #999;'" : "";
+        let 是否打勾 = 項目.checked ? "checked" : "";
+
+        任務.innerHTML = `
+            <input type="checkbox" class="打勾方塊" ${是否打勾}>
+            <label ${刪除線}>${項目.text}</label>
+            <button class="垃圾桶">🗑️</button>
+        `;
+
+        // 監聽垃圾桶：點擊時刪除該筆資料
+        const 垃圾桶 = 任務.querySelector(".垃圾桶");
+        垃圾桶.addEventListener("click", function() {
+            任務資料.splice(索引, 1); // 從陣列中刪除這筆資料 (索引位置, 刪除1筆)
+            更新並儲存(); // 重新儲存並更新畫面
+        });
+
+        // 監聽打勾方塊：點擊時改變狀態
+        const 打勾方塊 = 任務.querySelector(".打勾方塊");
+        打勾方塊.addEventListener("change", function() {
+            項目.checked = 打勾方塊.checked; // 把畫面的狀態同步回陣列資料裡
+            更新並儲存();
+        });
+
+        // 根據打勾狀態，決定放前面還是放後面
+        if (項目.checked) {
+            清單.append(任務);
+        } else {
+            清單.prepend(任務);
+        }
+    });
+}
+
+// 3. 儲存資料的函式：負責把陣列轉字串存入 LocalStorage，並重新畫畫面
+function 更新並儲存() {
+    // 使用 JSON.stringify() 把陣列轉成字串才能存進去
+    localStorage.setItem("myTodoList", JSON.stringify(任務資料));
+    渲染畫面();
+}
+
+// 4. 新增任務的函式
+function 新任務() {
+    if (文字欄.value.trim() === "") {
+        return;
+    }
+
+    // 把新任務包裝成一個「物件」，塞進「任務資料」陣列
+    let 點心 = {
+        text: 文字欄.value,
+        checked: false // 預設新任務都是未完成
+    };
+    
+    任務資料.push(點心);
+    更新並儲存(); // 儲存並更新
+    文字欄.value = "";
+}
+
+// 5. 事件監聽
+按鈕.addEventListener("click", 新任務);
+文字欄.addEventListener("keyup", function(e) {
+    if (e.key === "Enter") {
+        新任務();
+    }
+});
+
+// 6. 網頁一打開，立刻執行一次渲染畫面，把以前存的資料秀出來
+渲染畫面();
