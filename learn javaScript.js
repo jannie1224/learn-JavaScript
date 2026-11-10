@@ -286,16 +286,26 @@
 const 文字欄 = document.querySelector(".文字欄");
 const 清單 = document.querySelector(".清單");
 const 按鈕 = document.querySelector(".按鈕");
-
+const 篩選按鈕們 = document.querySelectorAll(".篩選按鈕");
 // 1. 初始化：從 LocalStorage 讀取資料，如果沒有資料，就給一個空陣列 []
 // 因為拿出來的是字串，所以要用 JSON.parse() 轉回陣列
 let 任務資料 = JSON.parse(localStorage.getItem("myTodoList")) || [];
-
+let 當前狀態 = "全部";
 // 2. 渲染畫面的函式：負責把「任務資料」陣列裡面的東西畫到網頁上
 function 渲染畫面() {
     清單.innerHTML = ""; // 每次畫之前先清空，不然會重複產出
+
+    let 篩選後的任務 = 任務資料.filter(項目 =>{
+        if(當前狀態==="未完成"){
+            return 項目.checked === false;//false 回到是否打勾改狀態
+        }else if(當前狀態 === "已完成"){
+            return 項目.checked === true;
+        }else{
+            return true;
+        }
+    });
     
-    任務資料.forEach((項目, 索引) => {
+    篩選後的任務.forEach((項目, 索引) => {
         const 任務 = document.createElement("li");
         
         // 根據資料內部的 checked 狀態，決定要不要加上刪除線樣式
@@ -311,7 +321,9 @@ function 渲染畫面() {
         // 監聽垃圾桶：點擊時刪除該筆資料
         const 垃圾桶 = 任務.querySelector(".垃圾桶");
         垃圾桶.addEventListener("click", function() {
-            任務資料.splice(索引, 1); // 從陣列中刪除這筆資料 (索引位置, 刪除1筆)
+            let 原陣列索引 = 任務資料.indexOf(項目);
+            //用 indexOf 尋找該項目在原陣列的索引
+            任務資料.splice(原陣列索引, 1); // 從陣列中刪除這筆資料 (索引位置, 刪除1筆)
             更新並儲存(); // 重新儲存並更新畫面
         });
 
@@ -331,6 +343,17 @@ function 渲染畫面() {
     });
 }
 
+篩選按鈕們.forEach(按鈕 =>{
+    按鈕.addEventListener("click",function(){
+        //移除其他按鈕的 active 樣式，並把 active 加到被點擊的按鈕上
+        篩選按鈕們.forEach(btn => btn.classList.remove("active"));
+        按鈕.classList.add("active");
+        // 取得按鈕身上的 data-type 屬性（全部 / 未完成 / 已完成）
+        當前狀態 = 按鈕.dataset.type;
+        渲染畫面();
+    });
+});
+
 // 3. 儲存資料的函式：負責把陣列轉字串存入 LocalStorage，並重新畫畫面
 function 更新並儲存() {
     // 使用 JSON.stringify() 把陣列轉成字串才能存進去
@@ -340,9 +363,7 @@ function 更新並儲存() {
 
 // 4. 新增任務的函式
 function 新任務() {
-    if (文字欄.value.trim() === "") {
-        return;
-    }
+    if (文字欄.value.trim() === "") return;
 
     // 把新任務包裝成一個「物件」，塞進「任務資料」陣列
     let 點心 = {
@@ -366,3 +387,7 @@ function 新任務() {
 // 6. 網頁一打開，立刻執行一次渲染畫面，把以前存的資料秀出來
 渲染畫面();
 //---------------------------------------------------------------------------------------------------------
+
+let allnumber = [80,50,60,20,40,60,70];
+let bignumber = allnumber.filter(number => number >50);
+console.log(bignumber);
