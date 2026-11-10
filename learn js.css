@@ -47,6 +47,10 @@ body{
     list-style-type:none;
     /* 去掉原本的小黑點 */
     padding:0;
+    height:60vh;
+       /*如果設定畫面是全部版面的多少% */
+    overflow-y:auto;
+    /* 如果超過剩餘空間，自動出現滾輪 */
 }
 
 .清單 li{
@@ -59,6 +63,20 @@ body{
     flex-grow:1;
 }
 
+/*清單滑桿-------------------------------------------------------------------------------- */
+.清單::-webkit-scrollbar{
+    width:6px;
+    /*整個滑輪*/
+}
+.清單::-webkit-scrollbar-thumb{
+    background: #ccc;
+    border-radius:3px;
+    /* 滑輪上的輪 */
+}
+.清單::-webkit-scrollbar-track{
+    background: #f1f1f1;
+    /* 滑輪上的滑軌 */
+}
 /* -------------------------------------------------------------- */
 .打勾方塊{
     margin-right:15px;
@@ -76,3 +94,42 @@ body{
     /* 當滑鼠放到垃圾桶上，透明度改回100 */
     opacity:1;
 }
+/* -------------------------------------------------------------------------------------- */
+
+.篩選按鈕區{
+    display:flex;
+    gap: 40px;
+    justify-content:center;
+    align-items:center; 
+}
+
+.篩選按鈕,
+.篩選按鈕.active{
+    color:#000000;
+    border: 1px solid white;
+    padding: 5px 8px;
+    font-size:16px;
+    border-radius:4px;
+    background-color:#ffffff;
+    cursor:pointer;
+    transition: all 0.2s ease
+    /* 讓選取動態更平滑 */
+}
+
+/* { 
+    color:#000000;
+    border: 1px solid white;
+    padding: 5px 8px;
+    font-size:16px;
+    border-radius:4px;
+    background-color:#ffffff;
+    cursor:pointer;
+    transition: all 0.2s ease
+    // 讓選取動態更平滑 
+} */
+
+.篩選按鈕:hover,
+.篩選按鈕.active:hover{
+ text-decoration: underline;
+}
+
